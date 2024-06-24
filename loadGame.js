@@ -8,7 +8,9 @@ function loadGame() {
         health = gameState.health;
         experience = gameState.experience;
         level = gameState.level;
+        inventory = gameState.inventory;
         updateBars();
+        displayInventory();
         logMessage('Game loaded successfully!');
     } else {
         logMessage('No saved game found!');
