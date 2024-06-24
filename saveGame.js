@@ -6,7 +6,8 @@ function saveGame() {
         intelligence,
         health,
         experience,
-        level
+        level,
+        inventory
     };
     localStorage.setItem('rpgGameState', JSON.stringify(gameState));
     logMessage('Game saved successfully!');
