@@ -1,44 +1,44 @@
-!DOCTYPE html
-html lang=en
-head
-    meta charset=UTF-8
-    meta name=viewport content=width=device-width, initial-scale=1.0
-    titleRPG Gametitle
-    style
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPG Game</title>
+    <style>
         body {
-            font-family Arial, sans-serif;
-            text-align center;
-            background-color #f4f4f4;
-            margin 0;
-            padding 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
         }
         #game {
-            margin-top 50px;
+            margin-top: 50px;
         }
         #log {
-            width 50%;
-            margin 20px auto;
-            padding 10px;
-            border 1px solid #ccc;
-            background #fff;
-            height 300px;
-            overflow-y scroll;
-            text-align left;
+            width: 50%;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background: #fff;
+            height: 300px;
+            overflow-y: scroll;
+            text-align: left;
         }
         button {
-            padding 10px 20px;
-            margin 5px;
+            padding: 10px 20px;
+            margin: 5px;
         }
-    style
-head
-body
-    h1Simple RPG Gameh1
-    div id=game
-        button onclick=explore()Explorebutton
-        button onclick=fight()Fightbutton
-        button onclick=rest()Restbutton
-    div
-    div id=logdiv
-    script src=game.jsscript
-body
-html
+    </style>
+</head>
+<body>
+    <h1>Simple RPG Game</h1>
+    <div id="game">
+        <button onclick="explore()">Explore</button>
+        <button onclick="fight()">Fight</button>
+        <button onclick="rest()">Rest</button>
+    </div>
+    <div id="log"></div>
+    <script src="game.js"></script>
+</body>
+</html>
