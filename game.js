@@ -1,31 +1,15 @@
 let log = document.getElementById('log');
 let healthBar = document.getElementById('health-bar');
 let experienceBar = document.getElementById('experience-bar');
-let characterClass = '';
 let characterName = '';
-
+let characterClass = '';
 let health = 100;
 let experience = 0;
 let level = 1;
-
-let stats = {
-    warrior: { strength: 15, agility: 5, intelligence: 5 },
-    mage: { strength: 5, agility: 5, intelligence: 15 },
-    rogue: { strength: 10, agility: 10, intelligence: 5 }
-};
-
-function selectClass(cClass) {
-    characterClass = cClass;
-    characterName = document.getElementById('character-name').value || 'Unknown Hero';
-    document.getElementById('character-selection').style.display = 'none';
-    document.getElementById('game').style.display = 'block';
-    document.getElementById('stats').style.display = 'block';
-    document.getElementById('inventory').style.display = 'block';
-    document.getElementById('health').style.display = 'block';
-    document.getElementById('experience').style.display = 'block';
-    logMessage(`You have chosen the ${characterClass} class!`);
-    updateStats();
-}
+let strength = 0;
+let agility = 0;
+let intelligence = 0;
+let inventory = [];
 
 function logMessage(message) {
     let p = document.createElement('p');
@@ -35,24 +19,51 @@ function logMessage(message) {
 }
 
 function updateBars() {
-    healthBar.style.width = `${health}%`;
-    experienceBar.style.width = `${experience / (level * 100) * 100}%`;
+    healthBar.style.width = health + '%';
+    experienceBar.style.width = (experience / (level * 100)) * 100 + '%';
+}
+
+function selectClass(characterClassSelection) {
+    characterName = document.getElementById('character-name').value || 'Hero';
+    characterClass = characterClassSelection;
+    if (characterClass === 'warrior') {
+        strength = 10;
+        agility = 5;
+        intelligence = 2;
+    } else if (characterClass === 'mage') {
+        strength = 2;
+        agility = 5;
+        intelligence = 10;
+    } else if (characterClass === 'rogue') {
+        strength = 5;
+        agility = 10;
+        intelligence = 2;
+    }
+    document.getElementById('character-selection').style.display = 'none';
+    document.getElementById('game').style.display = 'block';
+    document.getElementById('stats').style.display = 'block';
+    document.getElementById('inventory').style.display = 'block';
+    document.getElementById('health').style.display = 'block';
+    document.getElementById('experience').style.display = 'block';
+    updateStats();
+    updateBars();
+    logMessage(`Welcome, ${characterName} the ${characterClass}!`);
 }
 
 function updateStats() {
-    document.getElementById('character').textContent = characterName;
-    document.getElementById('strength').textContent = stats[characterClass].strength;
-    document.getElementById('agility').textContent = stats[characterClass].agility;
-    document.getElementById('intelligence').textContent = stats[characterClass].intelligence;
+    document.getElementById('character').textContent = `${characterName} the ${characterClass}`;
+    document.getElementById('strength').textContent = strength;
+    document.getElementById('agility').textContent = agility;
+    document.getElementById('intelligence').textContent = intelligence;
 }
 
 function explore() {
-    let event = Math.random();
-    if (event < 0.5) {
+    let chance = Math.random();
+    if (chance < 0.3) {
         let gold = Math.floor(Math.random() * 10) + 1;
+        inventory.push(`Gold: ${gold}`);
         logMessage(`You found ${gold} gold!`);
-        addToInventory(`${gold} gold`);
-    } else if (event < 0.8) {
+    } else if (chance < 0.6) {
         let exp = Math.floor(Math.random() * 10) + 1;
         experience += exp;
         logMessage(`You gained ${exp} experience points!`);
@@ -61,13 +72,13 @@ function explore() {
         health -= damage;
         logMessage(`You encountered a trap and lost ${damage} HP!`);
     }
-    levelUp();
     updateBars();
+    levelUp();
 }
 
 function fight() {
-    let event = Math.random();
-    if (event < 0.5) {
+    let chance = Math.random();
+    if (chance < 0.5) {
         let damage = Math.floor(Math.random() * 10) + 1;
         health -= damage;
         logMessage(`You got hit and lost ${damage} HP!`);
@@ -76,8 +87,8 @@ function fight() {
         experience += exp;
         logMessage(`You defeated an enemy and gained ${exp} experience points!`);
     }
-    levelUp();
     updateBars();
+    levelUp();
 }
 
 function rest() {
@@ -94,23 +105,6 @@ function levelUp() {
         experience = experience % 100;
         logMessage(`You leveled up! You are now level ${level}.`);
     }
-}
-
-let inventory = [];
-
-function addToInventory(item) {
-    inventory.push(item);
-    updateInventory();
-}
-
-function updateInventory() {
-    let inventoryList = document.getElementById('inventory-list');
-    inventoryList.innerHTML = '';
-    inventory.forEach(item => {
-        let li = document.createElement('li');
-        li.textContent = item;
-        inventoryList.appendChild(li);
-    });
 }
 
 updateBars();
