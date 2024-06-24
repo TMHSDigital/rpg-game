@@ -1,15 +1,14 @@
 let log = document.getElementById('log');
 let healthBar = document.getElementById('health-bar');
 let experienceBar = document.getElementById('experience-bar');
-let characterName = document.getElementById('character-name');
-let strength = document.getElementById('strength');
-let agility = document.getElementById('agility');
-let intelligence = document.getElementById('intelligence');
+let characterName = 'Paint the Warrior';
+let strength = 10;
+let agility = 5;
+let intelligence = 2;
 
 let health = 100;
 let experience = 0;
 let level = 1;
-let gold = 0;
 
 function logMessage(message) {
     let p = document.createElement('p');
@@ -21,33 +20,40 @@ function logMessage(message) {
 function updateBars() {
     healthBar.style.width = health + '%';
     experienceBar.style.width = (experience / (level * 100)) * 100 + '%';
+    document.getElementById('character-name').innerText = `Character: ${characterName}`;
+    document.getElementById('strength').innerText = strength;
+    document.getElementById('agility').innerText = agility;
+    document.getElementById('intelligence').innerText = intelligence;
 }
 
 function explore() {
-    let outcome = Math.random();
-    if (outcome < 0.5) {
-        let goldFound = Math.floor(Math.random() * 10) + 1;
-        gold += goldFound;
-        logMessage(`You found ${goldFound} gold!`);
+    let event = Math.random();
+    if (event < 0.3) {
+        let gold = Math.floor(Math.random() * 10) + 1;
+        logMessage(`You found ${gold} gold!`);
+    } else if (event < 0.6) {
+        let exp = Math.floor(Math.random() * 10) + 1;
+        experience += exp;
+        logMessage(`You gained ${exp} experience points!`);
+        levelUp();
     } else {
-        let expGained = Math.floor(Math.random() * 10) + 1;
-        experience += expGained;
-        logMessage(`You gained ${expGained} experience points!`);
+        let damage = Math.floor(Math.random() * 10) + 1;
+        health -= damage;
+        logMessage(`You encountered a trap and lost ${damage} HP!`);
     }
-    levelUp();
     updateBars();
 }
 
 function fight() {
-    let outcome = Math.random();
-    if (outcome < 0.5) {
+    let event = Math.random();
+    if (event < 0.5) {
         let damage = Math.floor(Math.random() * 10) + 1;
         health -= damage;
         logMessage(`You got hit and lost ${damage} HP!`);
     } else {
-        let expGained = Math.floor(Math.random() * 20) + 10;
-        experience += expGained;
-        logMessage(`You defeated an enemy and gained ${expGained} experience points!`);
+        let exp = Math.floor(Math.random() * 20) + 10;
+        experience += exp;
+        logMessage(`You defeated an enemy and gained ${exp} experience points!`);
     }
     levelUp();
     updateBars();
@@ -71,30 +77,29 @@ function levelUp() {
 
 function saveGame() {
     let gameState = {
-        health: health,
-        experience: experience,
-        level: level,
-        gold: gold,
-        log: log.innerHTML
+        characterName,
+        strength,
+        agility,
+        intelligence,
+        health,
+        experience,
+        level
     };
-    localStorage.setItem('rpgGameSave', JSON.stringify(gameState));
-    logMessage('Game saved!');
+    localStorage.setItem('rpgGameState', JSON.stringify(gameState));
+    logMessage('Game saved successfully!');
 }
 
 function loadGame() {
-    let savedState = localStorage.getItem('rpgGameSave');
-    if (savedState) {
-        let gameState = JSON.parse(savedState);
+    let gameState = JSON.parse(localStorage.getItem('rpgGameState'));
+    if (gameState) {
+        characterName = gameState.characterName;
+        strength = gameState.strength;
+        agility = gameState.agility;
+        intelligence = gameState.intelligence;
         health = gameState.health;
         experience = gameState.experience;
         level = gameState.level;
-        gold = gameState.gold;
-        log.innerHTML = gameState.log;
         updateBars();
-        logMessage('Game loaded!');
+        logMessage('Game loaded successfully!');
     } else {
-        logMessage('No saved game found.');
-    }
-}
-
-updateBars();
+        log
