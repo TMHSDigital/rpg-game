@@ -1,33 +1,37 @@
-title: Simple RPG Game
-description: A simple text-based RPG game implemented in JavaScript.
+# GitHub Pages configuration file
+
+# Source directory
+source: .
+
+# Destination directory
+destination: ./_site
+
+# Markdown processor
+markdown: kramdown
+
+# URL settings
+url: "https://fouttamypaint.github.io/rpg-game"
+baseurl: "/rpg-game"
+
+# Theme settings
 theme: minima
 
+# Plugins
 plugins:
   - jekyll-feed
 
-# Exclude from processing
+# Exclude these files and directories
 exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .git
+  - .github
   - README.md
 
-# Enable GitHub Pages
-github:
-  is_project_page: true
-
-# Config for GitHub Pages and Jekyll
-url: "https://your-github-username.github.io"
-baseurl: "/rpg-game"
-
-# Google Fonts
-sass:
-  style: compressed
-
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter_opts:
-    block:
-      line_numbers: true
-
-# Add Rubik Mono One Google Font
-sass:
-  style: compressed
+# Enable relative links
+relative_links: true
