@@ -102,4 +102,6 @@ function loadGame() {
         updateBars();
         logMessage('Game loaded successfully!');
     } else {
-        log
+        logMessage('No saved game found!');
+    }
+}
