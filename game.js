@@ -31,6 +31,7 @@ function explore() {
     if (event < 0.3) {
         let gold = Math.floor(Math.random() * 10) + 1;
         logMessage(`You found ${gold} gold!`);
+        addItemToInventory({ name: 'Gold', amount: gold });
     } else if (event < 0.6) {
         let exp = Math.floor(Math.random() * 10) + 1;
         experience += exp;
@@ -83,7 +84,8 @@ function saveGame() {
         intelligence,
         health,
         experience,
-        level
+        level,
+        inventory
     };
     localStorage.setItem('rpgGameState', JSON.stringify(gameState));
     logMessage('Game saved successfully!');
@@ -99,7 +101,9 @@ function loadGame() {
         health = gameState.health;
         experience = gameState.experience;
         level = gameState.level;
+        inventory = gameState.inventory;
         updateBars();
+        displayInventory();
         logMessage('Game loaded successfully!');
     } else {
         logMessage('No saved game found!');
