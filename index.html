@@ -29,14 +29,22 @@
             padding: 10px 20px;
             margin: 5px;
         }
-        .progress {
+        #stats, #inventory {
+            margin: 20px auto;
             width: 50%;
-            margin: 10px auto;
-            background-color: #ddd;
+            text-align: left;
+        }
+        .progress {
+            background-color: #f3f3f3;
+            border: 1px solid #ccc;
+            height: 20px;
+            width: 100%;
+            margin: 10px 0;
         }
         .progress-bar {
-            height: 20px;
             background-color: #4caf50;
+            height: 100%;
+            width: 0;
         }
     </style>
 </head>
@@ -46,26 +54,31 @@
         <button onclick="explore()">Explore</button>
         <button onclick="fight()">Fight</button>
         <button onclick="rest()">Rest</button>
-        <button onclick="saveGame()">Save</button>
-        <button onclick="loadGame()">Load</button>
+        <button onclick="saveGame()">Save Game</button>
+        <button onclick="loadGame()">Load Game</button>
     </div>
     <div id="log"></div>
-    <h2>Stats</h2>
     <div id="stats">
-        <p>Character: <span id="character-name">PAINT THE WARRIOR</span></p>
+        <h3>Stats</h3>
+        <p id="character-name">Character: Paint the Warrior</p>
         <p>Strength: <span id="strength">10</span></p>
         <p>Agility: <span id="agility">5</span></p>
         <p>Intelligence: <span id="intelligence">2</span></p>
     </div>
-    <h2>Inventory</h2>
-    <div id="inventory"></div>
-    <h2>Health</h2>
-    <div class="progress">
-        <div id="health-bar" class="progress-bar" style="width: 100%;"></div>
-    </div>
-    <h2>Experience</h2>
-    <div class="progress">
-        <div id="experience-bar" class="progress-bar" style="width: 0%;"></div>
+    <div id="inventory">
+        <h3>Inventory</h3>
+        <div id="health">
+            <h3>Health</h3>
+            <div class="progress">
+                <div id="health-bar" class="progress-bar" style="width: 100%;"></div>
+            </div>
+        </div>
+        <div id="experience">
+            <h3>Experience</h3>
+            <div class="progress">
+                <div id="experience-bar" class="progress-bar" style="width: 0%;"></div>
+            </div>
+        </div>
     </div>
     <script src="game.js"></script>
 </body>
