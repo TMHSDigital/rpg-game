@@ -1,0 +1,33 @@
+title: Simple RPG Game
+description: A simple text-based RPG game implemented in JavaScript.
+theme: minima
+
+plugins:
+  - jekyll-feed
+
+# Exclude from processing
+exclude:
+  - README.md
+
+# Enable GitHub Pages
+github:
+  is_project_page: true
+
+# Config for GitHub Pages and Jekyll
+url: "https://your-github-username.github.io"
+baseurl: "/rpg-game"
+
+# Google Fonts
+sass:
+  style: compressed
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# Add Rubik Mono One Google Font
+sass:
+  style: compressed
