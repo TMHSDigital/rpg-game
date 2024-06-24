@@ -109,3 +109,29 @@ function loadGame() {
         logMessage('No saved game found!');
     }
 }
+
+function resetGame() {
+    characterName = 'Paint the Warrior';
+    strength = 10;
+    agility = 5;
+    intelligence = 2;
+    health = 100;
+    experience = 0;
+    level = 1;
+
+    // Reset inventory
+    inventory = {
+        armor: null,
+        weapon: null,
+        gold: 0,
+        items: [],
+    };
+
+    // Clear localStorage
+    localStorage.removeItem('rpgGameState');
+
+    // Update UI
+    updateBars();
+    displayInventory();
+    logMessage('Game has been reset!');
+}
