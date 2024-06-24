@@ -5,10 +5,15 @@ let characterName = 'Paint the Warrior';
 let strength = 10;
 let agility = 5;
 let intelligence = 2;
-
 let health = 100;
 let experience = 0;
 let level = 1;
+let inventory = {
+    armor: null,
+    weapon: null,
+    gold: 0,
+    items: [],
+};
 
 function logMessage(message) {
     let p = document.createElement('p');
