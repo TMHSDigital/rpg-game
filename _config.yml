@@ -1,0 +1,4 @@
+title: RPG Game
+description: >- # this means to ignore newlines until "baseurl:"
+  A simple RPG game built with JavaScript and HTML.
+theme: minima
