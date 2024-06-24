@@ -79,5 +79,16 @@ function displayInventory() {
     });
 }
 
+// Test function to add items to inventory
+function testInventory() {
+    addItemToInventory({ name: 'Health Potion' });
+    addItemToInventory({ name: 'Mana Potion' });
+    equipArmor(armors.warrior[0]);
+    equipWeapon(weapons.warrior[0]);
+}
+
+// Call the test function on page load
+testInventory();
+
 // Initial display of the inventory
 displayInventory();
