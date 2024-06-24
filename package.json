@@ -1,0 +1,13 @@
+{
+  "name": "rpg-game",
+  "version": "1.0.0",
+  "main": "game.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6"
+  }
+}
