@@ -1,4 +1,40 @@
 title: RPG Game
-description: >- # this means to ignore newlines until "baseurl:"
-  A simple RPG game built with JavaScript and HTML.
-theme: minima
+description: A simple RPG game implemented in HTML, CSS, and JavaScript
+theme: jekyll-theme-slate
+
+# URL of the repository where the source code is hosted
+repository: fOuttaMyPaint/rpg-game
+
+# Enable GitHub Pages
+github:
+  is_project_page: true
+
+# Other settings
+markdown: kramdown
+highlighter: rouge
+
+# Exclude these files from the site
+exclude:
+  - README.md
+  - LICENSE
+  - .gitignore
+  - node_modules/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+
+# Include these files in the site
+include:
+  - _pages
+  - _posts
+  - _data
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Build settings
+permalink: pretty
+paginate: 5
