@@ -1,0 +1,37 @@
+name: Debug RPG Game
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run linter
+      run: npm run lint
+      continue-on-error: true
+
+    - name: Run tests
+      run: npm test
+      continue-on-error: true
+
+    - name: Log output files
+      run: |
+        cat ./path/to/output.log
+
+    - name: Upload debug logs
+      uses: actions/upload-artifact@v2
+      with:
+        name: debug-logs
+        path: ./path/to/output.log
