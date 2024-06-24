@@ -6,13 +6,13 @@
     <title>RPG Game</title>
     <style>
         body {
-            font-family: 'Rubik Mono One', Arial, sans-serif;
+            font-family: 'Rubik Mono One', sans-serif;
             text-align: center;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
         }
-        #game, #stats, #inventory {
+        #game {
             margin-top: 50px;
         }
         #log {
@@ -31,53 +31,41 @@
         }
         .progress {
             width: 50%;
-            margin: 20px auto;
-            background: #ccc;
-            border: 1px solid #999;
+            margin: 10px auto;
+            background-color: #ddd;
         }
         .progress-bar {
             height: 20px;
+            background-color: #4caf50;
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <h1>Simple RPG Game</h1>
-    <div id="character-selection">
-        <h3>Select Your Class</h3>
-        <input type="text" id="character-name" placeholder="Enter your character name">
-        <button onclick="selectClass('warrior')">Warrior</button>
-        <button onclick="selectClass('mage')">Mage</button>
-        <button onclick="selectClass('rogue')">Rogue</button>
-    </div>
-    <div id="game" style="display:none;">
+    <div id="game">
         <button onclick="explore()">Explore</button>
         <button onclick="fight()">Fight</button>
         <button onclick="rest()">Rest</button>
+        <button onclick="saveGame()">Save</button>
+        <button onclick="loadGame()">Load</button>
     </div>
     <div id="log"></div>
-    <div id="stats" style="display:none;">
-        <h3>Stats</h3>
-        <p>Character: <span id="character"></span></p>
-        <p>Strength: <span id="strength"></span></p>
-        <p>Agility: <span id="agility"></span></p>
-        <p>Intelligence: <span id="intelligence"></span></p>
+    <h2>Stats</h2>
+    <div id="stats">
+        <p>Character: <span id="character-name">PAINT THE WARRIOR</span></p>
+        <p>Strength: <span id="strength">10</span></p>
+        <p>Agility: <span id="agility">5</span></p>
+        <p>Intelligence: <span id="intelligence">2</span></p>
     </div>
-    <div id="inventory" style="display:none;">
-        <h3>Inventory</h3>
-        <ul id="inventory-list"></ul>
+    <h2>Inventory</h2>
+    <div id="inventory"></div>
+    <h2>Health</h2>
+    <div class="progress">
+        <div id="health-bar" class="progress-bar" style="width: 100%;"></div>
     </div>
-    <div id="health" style="display:none;">
-        <h3>Health</h3>
-        <div class="progress">
-            <div id="health-bar" class="progress-bar" style="width:100%; background:green;"></div>
-        </div>
-    </div>
-    <div id="experience" style="display:none;">
-        <h3>Experience</h3>
-        <div class="progress">
-            <div id="experience-bar" class="progress-bar" style="width:0%; background:blue;"></div>
-        </div>
+    <h2>Experience</h2>
+    <div class="progress">
+        <div id="experience-bar" class="progress-bar" style="width: 0%;"></div>
     </div>
     <script src="game.js"></script>
 </body>
