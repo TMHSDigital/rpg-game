@@ -43,14 +43,17 @@ const weapons = {
 
 function equipArmor(armor) {
     inventory.armor = armor;
+    displayInventory();
 }
 
 function equipWeapon(weapon) {
     inventory.weapon = weapon;
+    displayInventory();
 }
 
 function addItemToInventory(item) {
     inventory.items.push(item);
+    displayInventory();
 }
 
 function displayInventory() {
@@ -75,3 +78,6 @@ function displayInventory() {
         inventoryList.appendChild(listItem);
     });
 }
+
+// Initial display of the inventory
+displayInventory();
